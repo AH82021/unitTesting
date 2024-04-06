@@ -14,7 +14,7 @@ public class StudentManager {
 
     }
 
-    public Collection<Student> getAllContacts() {
+    public Collection<Student> getAllStudents() {
         return studentList.values();
     }
 
