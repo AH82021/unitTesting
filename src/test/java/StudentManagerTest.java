@@ -32,14 +32,14 @@ class StudentManagerTest {
     }
 
     @Test
-    @DisplayName("Should Not Create Contact When First Name is Null")
+    @DisplayName("Should Not Create Student When First Name is Null")
     public void shouldThrowRuntimeExceptionWhenFirstNameIsNull() {
         Assertions.assertThrows(RuntimeException.class, () -> {
             studentManager.addStudent(1L,null, "Doe","nullDoe@example.com", "0123456789");
         });
     }
     @Test
-    @DisplayName("Should Not Create Contact When Last Name is Null")
+    @DisplayName("Should Not Create Student When Last Name is Null")
     public void shouldThrowRuntimeExceptionWhenLastNameIsNull(){
         Assertions.assertThrows(RuntimeException.class,()->{
             studentManager.addStudent(1L,"John", null,"nullDoe@example.com", "0123456789");
@@ -48,7 +48,7 @@ class StudentManagerTest {
 
 
     @Test
-    @DisplayName("Should Not Create Contact When Email is Null")
+    @DisplayName("Should Not Create Student When Email is Null")
     public void shouldThrowRuntimeExceptionWhenEmailIsNull(){
         Assertions.assertThrows(RuntimeException.class,()->{
             studentManager.addStudent(1L,"John", "Doe",null, "0123456789");
@@ -57,7 +57,7 @@ class StudentManagerTest {
 
 
     @Test
-    @DisplayName("Should Not Create Contact When Email is Null")
+    @DisplayName("Should Not Create Student When Email is Null")
     public void shouldThrowRuntimeExceptionWhenEmailIsNotValid(){
         Assertions.assertThrows(RuntimeException.class,()->{
             studentManager.addStudent(1L,"John", "Doe","Johnexample.com", "0123456789");
@@ -65,7 +65,7 @@ class StudentManagerTest {
     }
 
     @Test
-    @DisplayName("Should Create Contact")
+    @DisplayName("Should Create Student")
     @EnabledOnOs(value = OS.MAC, disabledReason = "Should Run only on MAC")
     public void shouldAddStudentOnMAC() {
     studentManager.addStudent(1L,"John", "Doe","John@example.com", "0123456789");
@@ -73,8 +73,8 @@ class StudentManagerTest {
         assertEquals(1, studentManager.getAllStudents().size());
     }
     @Test
-    @DisplayName("Test Contact Creation on Developer Machine")
-    public void shouldTestContactCreationOnDEV() {
+    @DisplayName("Test Student Creation on Developer Machine")
+    public void shouldTestStudentCreationOnDEV() {
         Assumptions.assumeTrue("DEV".equals(System.getProperty("ENV")));
         studentManager.addStudent(1L,"John", "Doe","John@example.com", "0123456789");
         assertFalse(studentManager.getAllStudents().isEmpty());
